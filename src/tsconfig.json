@@ -4,6 +4,6 @@
     "lib": ["esnext", "dom"],
     "types": ["cypress", "node", "@testing-library/cypress"]
   },
-  "include": ["**/*.ts*", "../cypress.d.ts"],
+  "include": ["**/*.ts*", "../cypress.d.ts", "spy-practice.test.js"],
   "extends": "../tsconfig.json"
 }

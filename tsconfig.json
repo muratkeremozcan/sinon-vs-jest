@@ -1,18 +1,23 @@
 {
   "compilerOptions": {
     "baseUrl": "./src",
-    "target": "ESNext",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "types": ["cypress", "node", "@testing-library/cypress"],
-    "allowJs": false,
+    "paths": {
+      "@cypress/*": ["../cypress/*"],
+      "@support/*": ["../cypress/support/*"],
+      "@fixtures/*": ["../cypress/fixtures/*"]
+    },
+    "target": "es6",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "types": ["cypress", "node", "@testing-library/cypress", "@types/jest"],
+    "allowJs": true,
     "skipLibCheck": true,
-    "esModuleInterop": false,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "ESNext",
-    "moduleResolution": "Node",
+    "module": "esnext",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "noEmit": true,
     "jsx": "react-jsx"
