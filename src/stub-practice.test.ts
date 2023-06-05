@@ -7,6 +7,28 @@
 
 // In Sinon, the equivalent function is sinon.stub().
 // Both jest.fn() and sinon.stub() serve the same purpose of creating mock functions.
+// In Jest, you can use .mockImplementation() to provide a custom implementation for the mock function.
+// In Sinon, you can use .callsFake() or .returns() to specify custom behavior for the stub.
+
+// jest.fn() can be used more in scenarios where you're not spying on or modifying existing object methods
+// but rather creating standalone mock functions.
+// For instance, when testing if a function passed as a prop or callback is called correctly in a component test
+// or when needing to create a mock implementation for a function from a module that your function under test is calling.
+// Here is an example scenario where jest.fn() could be used
+describe('standalone function', () => {
+  it('should call the callback', () => {
+    const mockCallback = jest.fn()
+
+    function doSomething(callback: (arg: string) => void) {
+      callback('test argument')
+    }
+
+    doSomething(mockCallback)
+
+    expect(mockCallback).toHaveBeenCalledTimes(1)
+    expect(mockCallback).toHaveBeenCalledWith('test argument')
+  })
+})
 
 describe("stub basics: onCall(), onFirstCall(), onSecondCall(), .returns(..), throws(...), invoke('restore')", () => {
   it('replace a function', () => {
@@ -16,8 +38,7 @@ describe("stub basics: onCall(), onFirstCall(), onSecondCall(), .returns(..), th
       },
     }
 
-    // @ts-expect-error: it's a stub
-    const stub = jest.spyOn(obj, 'foo').mockImplementation(() => {})
+    const stub = jest.spyOn(obj, 'foo').mockImplementation(jest.fn())
     obj.foo('foo', 'bar')
 
     expect(stub).toHaveBeenCalledWith('foo', 'bar')
