@@ -1,0 +1,66 @@
+{
+  "name": "quick-vitejs-react-typescript-jest",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "vite",
+    "build": "tsc && vite build",
+    "serve": "vite preview",
+    "test": "jest",
+    "test:coverage": "yarn test --watchAll=false --collectCoverageFrom=src/**/*.ts* --collectCoverageFrom=!src/**/*.*.ts* --coverage",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|css|md|mdx|html)\"",
+    "lint": "eslint . --cache-location node_modules/.cache/eslint",
+    "typecheck": "tsc --noEmit",
+    "validate": "npm-run-all --parallel format lint typecheck build",
+    "cy:open": "cypress open",
+    "cy:open-e2e": "server-test 3000 'cypress open --e2e --browser chrome'",
+    "cy:run-e2e": "server-test 3000 'cypress run --e2e --browser chrome'",
+    "cy:open-ct": "cypress open --component --browser chrome",
+    "cy:run-ct": "cypress run --component --browser chrome",
+    "cy:run-ct-fast": "yarn cy:run-ct --config video=false screenshot=false"
+  },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@cypress/grep": "3.1.5",
+    "@testing-library/cypress": "9.0.0",
+    "@testing-library/dom": "9.3.0",
+    "@testing-library/jest-dom": "5.16.5",
+    "@testing-library/react": "14.0.0",
+    "@testing-library/user-event": "14.4.3",
+    "@types/jest": "29.5.2",
+    "@types/node": "18.16.16",
+    "@types/react": "18.2.8",
+    "@types/react-dom": "18.2.4",
+    "@typescript-eslint/eslint-plugin": "5.59.8",
+    "@typescript-eslint/parser": "5.59.8",
+    "@vitejs/plugin-react": "4.0.0",
+    "cypress": "12.13.0",
+    "eslint": "8.42.0",
+    "eslint-config-prettier": "8.8.0",
+    "eslint-config-react-app": "7.0.1",
+    "eslint-plugin-chai-friendly": "0.7.2",
+    "eslint-plugin-cypress": "2.12.1",
+    "eslint-plugin-no-only-tests": "3.1.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "husky": "4.3.8",
+    "identity-obj-proxy": "3.0.0",
+    "jest": "27.3.1",
+    "jest-environment-jsdom": "27.5.1",
+    "lint-staged": "13.2.2",
+    "npm-run-all": "4.1.5",
+    "prettier": "2.8.8",
+    "start-server-and-test": "2.0.0",
+    "ts-jest": "27.0.7",
+    "ts-node": "10.9.1",
+    "typescript": "4.3.2",
+    "vite": "4.1.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn typecheck && yarn test --watchAll=false && lint-staged"
+    }
+  }
+}
