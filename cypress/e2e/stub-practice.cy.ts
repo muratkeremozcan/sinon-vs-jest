@@ -181,7 +181,8 @@ describe('matchers: .callThrough(), withArgs(), match.type, match(predicate)', (
     expect(greeter.greet).to.have.been.calledTwice
 
     // non-matched calls goes the actual method
-    expect(greeter.greet('')).to.equal('Hello, undefined!')
+    // @ts-expect-error no arg
+    expect(greeter.greet()).to.equal('Hello, undefined!')
   })
 })
 
@@ -307,7 +308,7 @@ describe('geoLocation', () => {
   })
 })
 
-describe.only('fail if there is a console.log', () => {
+describe('fail if there is a console.log', () => {
   beforeEach(() =>
     cy.intercept('GET', '/', {fixture: 'check-console.log.html'}),
   )

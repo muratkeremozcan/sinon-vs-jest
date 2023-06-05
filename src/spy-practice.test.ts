@@ -12,10 +12,6 @@ describe('spy basics and call arguments: called, calledOnce, calledWith, calledW
 
     // assert against the spy directly
     expect(spy).toHaveBeenCalled()
-
-    // Clean up the spy
-    // KEY difference with Jest: we have to clean up the spy
-    spy.mockRestore()
   })
 
   it('spies can retry with the Jest api', async () => {
@@ -78,8 +74,6 @@ describe('spy basics and call arguments: called, calledOnce, calledWith, calledW
 
     // verify the property was set
     expect(person).toHaveProperty('name', 'John Doe')
-
-    spy.mockRestore()
   })
 })
 
@@ -147,7 +141,6 @@ describe("matchers: match.type, match(predicate, 'optional-message'), match.in([
     // the other 2 comparable custom matchers are not even worth getting into...
 
     // cleanup
-    spy.mockRestore()
   })
 
   describe("call count & promises: have.been.calledThrice, its('callCount).should('eq', 4), invoke('resetHistory'), for promises: .its('returnValues')", () => {
@@ -221,8 +214,6 @@ describe("matchers: match.type, match(predicate, 'optional-message'), match.in([
       // @ts-expect-error: no bind method
       expect(getNameSpy.bind(testRunner)()).toBe('Cypress')
       expect(getNameSpy).toHaveBeenCalledTimes(2)
-
-      getNameSpy.mockRestore()
     })
   })
 })
