@@ -1,3 +1,13 @@
+//  jest.spyOn().mockImplementation() provides more flexibility if you need to access the original method
+//  or control the implementation in a more detailed way.
+// However, for simpler cases, using jest.fn() alone can suffice.
+// jest.fn() is used to create a standalone mock function,
+// while jest.spyOn(...).mockImplementation is used to spy on an existing object or module
+// and provide a custom implementation for a specific method.
+
+// In Sinon, the equivalent function is sinon.stub().
+// Both jest.fn() and sinon.stub() serve the same purpose of creating mock functions.
+
 describe("stub basics: onCall(), onFirstCall(), onSecondCall(), .returns(..), throws(...), invoke('restore')", () => {
   it('replace a function', () => {
     const obj = {
