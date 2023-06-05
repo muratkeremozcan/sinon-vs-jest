@@ -10,9 +10,8 @@
 [renovate-badge]: https://img.shields.io/badge/renovate-app-blue.svg
 [renovate-app]: https://renovateapp.com/
 
-A template with React, TS, Cypress (e2e & ct), GHA with CI architecture, Jest,
-ESLint, Prettier, Renovate, Husky, Lint-staged, and most of the things you need
-to get started with a new project.
+A cheat sheet for spying and stubbing with Cypress Sinon vs Jest. 
+The source material for Sinon is from Gleb Bahmutov's [Cypress Examples - Spies and Stubs](https://glebbahmutov.com/cypress-examples/#spies-and-stubs).
 
 ```bash
 yarn install --registry https://registry.yarnpkg.com # specify the registry in case you are using a proprietary registry
